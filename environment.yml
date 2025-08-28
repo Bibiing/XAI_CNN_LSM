@@ -1,0 +1,22 @@
+name: lsm-project-env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.4.0
+  - torchvision=0.19.0
+  - torchaudio=2.4.0
+  - pytorch-cuda=12.4
+  - gdal
+  - numpy
+  - pandas
+  - tqdm
+  - shap
+  - matplotlib
+  - scikit-learn
+  - seaborn
+# conda env create -f environment.yml
+# conda activate lsm-project-env

@@ -116,7 +116,7 @@ def drawAUC_TwoClass(y_true,y_score,path):
     plt.legend(loc="lower right")
 
     #print("AUC:",roc_auc)
-    plt.savefig('simulasi/'+path, format='png')
+    plt.savefig('hasil/'+path, format='png')
     plt.cla()
     plt.close("all")
 
@@ -129,7 +129,7 @@ def draw_loss(loss1, loss2):
     plt.xlabel('epochs') 
     plt.ylabel('loss')  
     plt.legend(loc='lower right')
-    plt.savefig('simulasi/loss.png')
+    plt.savefig('hasil/loss.png')
 #plot acc
 def draw_acc(acc1, acc2):
     plt.figure(figsize=(5,5,),dpi=300)
@@ -139,4 +139,4 @@ def draw_acc(acc1, acc2):
     plt.xlabel('epochs') 
     plt.ylabel('accuracy')  
     plt.legend(loc='lower right')
-    plt.savefig('simulasi/accuracy.png')
+    plt.savefig('hasil/accuracy.png')

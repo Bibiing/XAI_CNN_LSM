@@ -96,7 +96,7 @@ def main():
 
                 drawAUC_TwoClass(val_labels_list, score_array[:,1], 'val_AUC.png')
                 drawAUC_TwoClass(train_labels_list, train_array[:,1], 'train_AUC.png')
-                torch.save(model.state_dict(), 'simulasi/best.pth')
+                torch.save(model.state_dict(), 'hasil/best.pth')
             # Record Loss, accuracy
             record["val"]["loss"].append(val_loss /len(val_dataset))
             record["val"]["acc"].append(val_acc / len(val_dataset))
@@ -104,9 +104,9 @@ def main():
     draw_acc(record["train"]["acc"], record["val"]["acc"])
     draw_loss(record["train"]["loss"], record["val"]["loss"])
 
-    with open('simulasi/record.json', 'w') as f:
+    with open('hasil/record(3).json', 'w') as f:
         json.dump(record, f)
-    torch.save(model.state_dict(), 'simulasi/latest.pth')
+    torch.save(model.state_dict(), 'hasil/latest.pth')
 
 if __name__=='__main__':
     main()
