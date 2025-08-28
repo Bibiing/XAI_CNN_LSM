@@ -3,8 +3,8 @@ from osgeo import gdal
 import argparse
 import sys
 parser = argparse.ArgumentParser()
-parser.add_argument( "--feature_path", default='data_kotak/feature/', type=str)
-parser.add_argument( "--label_path", default='data_kotak/label/label1.tif', type=str)
+parser.add_argument( "--feature_path", default='Data/feature/', type=str)
+parser.add_argument( "--label_path", default='Data/label/label1.tif', type=str)
 args = parser.parse_args()
 
 def get_tiff_attributes(tiff_path):
