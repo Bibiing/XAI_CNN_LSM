@@ -1,5 +1,6 @@
 import json
 import torch
+import random
 import argparse
 import numpy as np
 import torch.nn as nn
@@ -9,6 +10,19 @@ import data_prepare as dp
 from model import LSM_cnn
 from torch import optim
 from utils import drawAUC_TwoClass, draw_acc, draw_loss
+
+def set_seed(seed):
+    """Fungsi untuk mengatur random seed."""
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+set_seed(42)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train CNN Processes on data")

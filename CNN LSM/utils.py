@@ -115,7 +115,7 @@ def drawAUC_TwoClass(y_true,y_score,path):
     plt.ylabel('True Positive Rate')  #tpr
     plt.legend(loc="lower right")
 
-    #print("AUC:",roc_auc)
+    print("AUC:",roc_auc)
     plt.savefig('hasil/'+path, format='png')
     plt.cla()
     plt.close("all")
