@@ -1,5 +1,6 @@
 import torch.nn as nn
 from utils import Modified_SPPLayer  
+
 #attention
 class SELayer(nn.Module):
     def __init__(self,channel,reduction=16):

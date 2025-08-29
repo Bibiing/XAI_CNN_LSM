@@ -1,15 +1,14 @@
 import json
 import torch
 import argparse
-import data_prepare as dp
 import numpy as np
 import torch.nn as nn
 from torch.utils.data import TensorDataset
 
+import data_prepare as dp
 from model import LSM_cnn
 from torch import optim
 from utils import drawAUC_TwoClass, draw_acc, draw_loss
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train CNN Processes on data")
