@@ -1,11 +1,4 @@
-# Note development
-
 ### **AUC Score from jurnal train 97,94%, val 97,31%**
-
-- menggunakan randomseed selama pengembangan. Setiap kali mengubah arsitektur, hyperparameter, atau memperbaiki kode, perbedaan hasil disebabkan oleh perubahan tersebut.
-- saat evaluasi akhir menggunakan 5-10 seed berbeda, dan mencatat mean dan standard deviation untuk membuktikan bahwa performa **stabil, robust, dan bukan sekadar kebetulan**
-
----
 
 ## 1. data_check
 
