@@ -11,18 +11,18 @@ from model import LSM_cnn
 from torch import optim
 from utils import drawAUC_TwoClass, draw_acc, draw_loss
 
-def set_seed(seed):
-    """Fungsi untuk mengatur random seed."""
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+# def set_seed(seed):
+#     """Fungsi untuk mengatur random seed."""
+#     random.seed(seed)
+#     np.random.seed(seed)
+#     torch.manual_seed(seed)
+#     if torch.cuda.is_available():
+#         torch.cuda.manual_seed(seed)
+#         torch.cuda.manual_seed_all(seed)
+#     torch.backends.cudnn.deterministic = True
+#     torch.backends.cudnn.benchmark = False
 
-set_seed(42)
+# set_seed(84)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train CNN Processes on data")
@@ -117,7 +117,7 @@ def main():
     draw_acc(record["train"]["acc"], record["val"]["acc"])
     draw_loss(record["train"]["loss"], record["val"]["loss"])
 
-    with open('hasil/record(3).json', 'w') as f:
+    with open('hasil/record.json', 'w') as f:
         json.dump(record, f)
     torch.save(model.state_dict(), 'hasil/latest.pth')
 

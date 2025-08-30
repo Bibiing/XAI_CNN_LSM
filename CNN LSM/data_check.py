@@ -20,6 +20,7 @@ w, h, transform = get_tiff_attributes(args.label_path)
 consistency["w"].append(w)
 consistency["h"].append(h)
 consistency["transform"].append([int(value) for value in transform])
+# print(f"Reading label1.tif data. \nWidth: {w}, Height: {h}, Transform: {transform}")
 #feature
 for tif_data in os.listdir(args.feature_path,):
     w, h, transform = get_tiff_attributes(os.path.join(args.feature_path, tif_data))
@@ -27,6 +28,7 @@ for tif_data in os.listdir(args.feature_path,):
     consistency["w"].append(w)
     consistency["h"].append(h)
     consistency["transform"].append([int(value) for value in transform])
+    # print(f"Width: {w}, Height: {h}, Transform: {transform}")
 consistency["w"] = set(consistency["w"])
 consistency["h"] = set(consistency["h"])
 if(len(consistency["w"])!=1):
