@@ -40,8 +40,8 @@ def main():
     
     # processing features
     for feature_name in feature_files:
-        img, _, _ = reader.read_tif_file(os.path.join(args.feature_path, feature_name))
-        norm_img, _ = preprocessor.normalize_min_max(img)
+        img, _, _ = reader.read_data_from_tif(os.path.join(args.feature_path, feature_name))
+        norm_img, _, _ = preprocessor.normalize_min_max(img)
         padded_img = preprocessor.apply_padding(norm_img, n, pad_value=0)
         padded_features.append(padded_img)
         
@@ -49,11 +49,11 @@ def main():
     print(f"Feature block created successfully: {feature_block.shape}")
     
     # processing label
-    label_img, _, _ = reader.read_tif_file(args.label_path)
+    label_img, _, _ = reader.read_data_from_tif(args.label_path)
     padded_label = preprocessor.apply_padding(label_img, n, pad_value=0.1)
     
     # --- create CNN dataset ---
-    train_x, train_y, val_x, val_y = dataset.create_cnn_patches(
+    train_x, train_y, val_x, val_y = dataset.get_CNN_data(
         feature_block, padded_label, args.window_size
     )
     print(f"Dataset created: {train_x.shape[0]} train data, {val_x.shape[0]} val data.")
