@@ -22,7 +22,6 @@ def parse_args():
     parser.add_argument("--lr", default=0.0001, type=float)
     parser.add_argument("--batch_size", default=128, type=int)
     parser.add_argument("--epochs", default=500, type=int)
-    parser.add_argument("--seed", default=42, type=int)
     args = parser.parse_args()
     return args
 
@@ -33,7 +32,7 @@ def main():
     reader.validate_consistency(args.feature_path, args.label_path)
 
     # --- load and processing data ---
-    feature_files = sorted([f for f in os.listdir(args.feature_path) if f.lower().endswith('.tif')])
+    feature_files = [f for f in os.listdir(args.feature_path) if f.lower().endswith('.tif')]
 
     padded_features = []
     n = args.window_size // 2
@@ -63,7 +62,7 @@ def main():
     train_loader = DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True)
     
     val_dataset = TensorDataset(torch.from_numpy(val_x).float(), torch.from_numpy(val_y).float())
-    val_loader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=False)
+    val_loader = DataLoader(dataset=val_dataset, batch_size=args.batch_size, shuffle=True)
     
     # --- initiate & train model ---
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -95,8 +94,6 @@ def main():
             train_acc += (preds.squeeze() == target.squeeze()).sum().item()
             train_outputs_list.extend(outputs.detach().cpu().numpy())
             train_labels_list.extend(target.cpu().numpy())
-
-        scheduler.step()
         
         # Evaluasi
         model.eval()
@@ -137,6 +134,8 @@ def main():
         record["train"]["loss"].append(avg_train_loss)
         record["val"]["acc"].append(avg_val_acc)
         record["val"]["loss"].append(avg_val_loss)
+    
+    scheduler.step()
 
     print("Pelatihan selesai.")
     draw_acc(record["train"]["acc"], record["val"]["acc"], os.path.join(args.output_dir, 'accuracy.png'))
