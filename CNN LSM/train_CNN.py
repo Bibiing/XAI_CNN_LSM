@@ -32,7 +32,7 @@ def main():
     reader.validate_consistency(args.feature_path, args.label_path)
 
     # --- load and processing data ---
-    feature_files = [f for f in os.listdir(args.feature_path) if f.lower().endswith('.tif')]
+    feature_files = sorted([f for f in os.listdir(args.feature_path) if f.lower().endswith('.tif')])
 
     padded_features = []
     n = args.window_size // 2
