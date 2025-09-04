@@ -15,8 +15,8 @@ from utils import drawAUC_TwoClass, draw_acc, draw_loss
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train CNN Processes on data")
-    parser.add_argument("--feature_path", default='Data/feature/', type=str)
-    parser.add_argument("--label_path", default='Data/label/label1.tif', type=str)
+    parser.add_argument("--feature_path", default='Data/mojokerto/feature/', type=str)
+    parser.add_argument("--label_path", default='Data/mojokerto/label/label1.tif', type=str)
     parser.add_argument("--output_dir", default='Hasil/', type=str)
     parser.add_argument("--window_size", default=15, type=int)
     parser.add_argument("--lr", default=0.0001, type=float)
